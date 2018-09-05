@@ -43,17 +43,20 @@ void initBinaryTree()
     {
         printf("\n\n1 - push\n2 - pop\n3- display\nq - back\n\n>");
         read = getchar();
+        clearInputBuffer();
         switch (read)
         {
             case '1':
-                
+                binaryTree.push(getchar());     // Save the int value of the char. Dirty use of int m_key in Node.
+                clearInputBuffer();
             break;
 
             case '2':
-                
+                binaryTree.pop();
             break;
 
             case '3': 
+                binaryTree.display();
             break;
         }
     } while (read != 'q');
@@ -95,7 +98,6 @@ int main(int argc, char** args)
     } while (read != 'q');
     
     printf("Application exiting, press enter to continue.\n\n>");
-    
     getchar();
     clearInputBuffer();                                 // Clear input stream from in case its not empty.
     return 0;
