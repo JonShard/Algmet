@@ -12,3 +12,11 @@ public:
     Node(int key);
 };
 
+class BinaryTreeNode : public Node
+{
+public: 
+    class BinaryTreeNode* m_right;
+    class BinaryTreeNode* m_left;
+
+    BinaryTreeNode();
+};

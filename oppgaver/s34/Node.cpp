@@ -6,3 +6,10 @@ Node::Node(int key)
     m_key = key;
     m_next = nullptr;
 }
+
+
+BinaryTreeNode::BinaryTreeNode()
+{
+    m_right = nullptr;
+    m_left = nullptr;
+}
