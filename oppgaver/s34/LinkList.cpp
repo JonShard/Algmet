@@ -43,10 +43,11 @@ Node* LinkList::push(int key)
     return head->m_next;
 }
 
-Node* LinkList::pop()
+int LinkList::pop()
 {
     Node* head = m_firstNode;                       // Create a head that will move through the list.
     Node* target = nullptr;
+    int targetKey = 0;
 
     if (head != nullptr)                            // If not fist node.
     {
@@ -56,19 +57,22 @@ Node* LinkList::pop()
         }
         target = head->m_next;
         head->m_next = nullptr;
-        m_nodeCount--;
 
+        m_nodeCount--;
+        targetKey = target->m_key;
+        delete target;
         printf("popped node with key %d off the list.", target->m_key);
-        return target;
+        return targetKey;
     }
 
     printf("Can not pop from an empty list.");
-    return nullptr;
+    return targetKey;
 }
 
 
 int LinkList::length()
 {   return m_nodeCount;     }
+
 
 void LinkList::display()
 {
@@ -86,6 +90,36 @@ void LinkList::display()
     else
     {
         printf("List empty, nothing to display.\n");
-
     }
+}
+
+
+bool LinkList::moveToFront(Node* t)
+{
+    Node* head = m_firstNode;                       // Create a head that will move through the list.
+    if (head != nullptr)                            // If not fist node.
+    {
+        while (head->m_next != nullptr)
+        {
+            if (head->m_next == t)
+            {
+                if (head->m_next->m_next == nullptr)
+                {
+                    printf("Node t is already at front.\n");
+                    return false;
+                }
+                head->m_next = head->m_next->m_next;
+            }
+            head = head->m_next;
+        }
+        head->m_next = t;
+        t->m_next = nullptr;
+        printf("Moved node t with key %d to front.\n", t->m_key);
+        return true;
+    }
+
+    printf("List empty, can not move t to front.\n");
+    return false;
+    
+
 }

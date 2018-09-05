@@ -22,17 +22,19 @@ int main(int argc, char** args)
         input = std::atoi(args[1]);                     // Converting input to int.
     }
     printf("Received input %d\n", input);
-
     LinkList linkList;
 
+    Node** nodes = new Node*[input];
+
     for(auto i = 0; i < input; i++)
-    {
-        linkList.push(i);
-    }
+        nodes[i] = linkList.push(i);
+
+    Node* notInList = new Node(999);
 
     linkList.display();
-    linkList.pop();
+    linkList.moveToFront(notInList);
+
     linkList.display();
-    
+
     return 0;
 }
