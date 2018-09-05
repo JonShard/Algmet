@@ -1,14 +1,6 @@
+#pragma once
 #include <cstdio>                                   // Printf
-
-class Node 
-{
-public:
-    int m_key;
-    class Node* m_next;
-
-    Node(int key);
-};
-
+#include "Node.h"
 
 class LinkList
 {
