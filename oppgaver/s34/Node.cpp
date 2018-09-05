@@ -1,4 +1,4 @@
-#include "Node.h"
+#include "Node.hpp"
 
 Node::Node(int key)
 {
@@ -8,7 +8,7 @@ Node::Node(int key)
 }
 
 
-BinaryTreeNode::BinaryTreeNode()
+BinaryTreeNode::BinaryTreeNode(int key) : Node(key)
 {
     m_right = nullptr;
     m_left = nullptr;

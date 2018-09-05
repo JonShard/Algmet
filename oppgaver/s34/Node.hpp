@@ -18,5 +18,5 @@ public:
     class BinaryTreeNode* m_right;
     class BinaryTreeNode* m_left;
 
-    BinaryTreeNode();
+    BinaryTreeNode(int key);
 };
