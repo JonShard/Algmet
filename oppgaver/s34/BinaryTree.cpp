@@ -3,10 +3,12 @@
 BinaryTree::BinaryTree()
 {
     m_root = nullptr;
+    m_height = 0;
+    m_length = 0;
 }
 
 
-void recursivePush(BinaryTreeNode* root, int key)
+void BinaryTree::recursiveKeyCheckingPush(BinaryTreeNode* root, int key)
 {
     if (key < root->m_key)
     {
@@ -16,7 +18,7 @@ void recursivePush(BinaryTreeNode* root, int key)
         }
         else 
         {
-            recursivePush(root->m_left, key);
+            recursiveKeyCheckingPush(root->m_left, key);
         }
     } 
     else
@@ -27,20 +29,53 @@ void recursivePush(BinaryTreeNode* root, int key)
         }
         else 
         {
-            recursivePush(root->m_right, key);
+           recursiveKeyCheckingPush(root->m_right, key);
         }
     }
 }
 
-void BinaryTree::push(int key)
+void BinaryTree::recursivePush(BinaryTreeNode* root, int key, int level, int column)
 {
     
-    if (m_root == nullptr)
+    if (root->m_left == nullptr && m_height - level == 1)         // If left child empty and at deepest level yet, make left child, done.
     {
-        m_root = new BinaryTreeNode(key);
+        root->m_left = new BinaryTreeNode(key);
+        m_length++;
+        return;
+    }
+    if (root->m_right == nullptr && m_height - level == 1)        // If right child empty and at deepest level yet, make right child, done.
+    {
+        root->m_right = new BinaryTreeNode(key);
+        if (column == std::pow(2, m_height-1) -1)       // If in rightmost node at deepest level. Add another layer.
+        {
+            m_height++; 
+        }
+        m_length++;
+        return;
     }
 
-    recursivePush(m_root, key);
+    int length = m_length;
+    if (root->m_left)
+    {
+        recursivePush(root->m_left, key, level+1, (column-1 > 0) ? column-1 : 0);
+    }
+    if(root->m_right && length == m_length) // If there is a right child and recursive on left side didn't push the new node.
+    {
+        recursivePush(root->m_right, key, level+1, column+1);
+    }
+}
+
+void BinaryTree::push(int key)
+{   
+    if (!m_root)
+    {
+        m_root = new BinaryTreeNode(key);
+        m_height++;
+        m_length++;
+        return;
+    }
+
+    recursivePush(m_root, key, 0, 0);
 
 }
 

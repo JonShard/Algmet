@@ -7,6 +7,7 @@
 #include "BinaryTree.hpp"
 
 
+
 void clearInputBuffer()
 {
     char c = ' ';

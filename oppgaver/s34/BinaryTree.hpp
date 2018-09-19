@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdio>
+#include <cmath>
 #include "Node.hpp"
 
 
@@ -8,8 +9,12 @@ class BinaryTree
 {
 private:
     BinaryTreeNode* m_root;
+    int m_height;
+    int m_length; 
 
-
+    void recursiveKeyCheckingPush(BinaryTreeNode* root, int key);
+    void recursivePush(BinaryTreeNode* root, int key, int level, int column);
+    
 public: 
     BinaryTree();
     void push(int key);         // Adds a node with int key to the tree.
