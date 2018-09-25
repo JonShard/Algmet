@@ -89,12 +89,29 @@ int BinaryTree::pop()
 
 int BinaryTree::length()
 {
-
-    return 0;
+    return m_length;
 }
 
 
-void BinaryTree::display()
+void displayTree(BinaryTreeNode* root)
 {
 
+}
+
+void BinaryTree::display()
+{
+    if (m_root)
+    {
+        BinaryTreeNode* head = m_root;
+        while(head)
+        {
+            if (head->m_left) ;
+            printf("%d", head->m_key);
+            if (head->m_right) ;
+        }
+    }
+    else
+    {
+        printf("Can not display an empty tree.\n");
+    }
 }
