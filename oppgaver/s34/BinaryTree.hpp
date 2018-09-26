@@ -15,7 +15,8 @@ private:
     void recursiveKeyCheckingPush(BinaryTreeNode* root, int key);
     void recursivePush(BinaryTreeNode* root, int key, int level, int column);
     
-public: 
+public:
+    enum Order { PreOrder, InOrder, PostOrder};
     BinaryTree();
     void push(int key);         // Adds a node with int key to the tree.
     int pop();                  // Removes the right-most node on the bottom level of the tree. Returns the removed node's key.

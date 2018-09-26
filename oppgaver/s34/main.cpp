@@ -6,16 +6,8 @@
 #include "LinkList.hpp"
 #include "BinaryTree.hpp"
 
+#include "Utilities.hpp"
 
-
-void clearInputBuffer()
-{
-    char c = ' ';
-    do 
-    {
-        c = getchar();
-    } while (c != '\n' && c != EOF);
-}
 
 void initLinkList(int length)
 {
@@ -39,17 +31,23 @@ void initBinaryTree()
 {
     BinaryTree binaryTree;                          // TODO: make destructor.
 
+    // Test values:
+    for (char i = 'A'; i <= 'H'; i++)
+    {
+        binaryTree.push(i);
+    }
+
     char read = ' ';
     do 
     {
         printf("\n\n1 - push\n2 - pop\n3- display\nq - back\n\n>");
         read = getchar();
-        clearInputBuffer();
+        util::clearInputBuffer();
         switch (read)
         {
             case '1':
                 binaryTree.push(getchar());     // Save the int value of the char. Dirty use of int m_key in Node.
-                clearInputBuffer();
+                util::clearInputBuffer();
             break;
 
             case '2':
@@ -85,7 +83,7 @@ int main(int argc, char** args)
     {
         printf("\n\n1 - linkList\n2 - binaryTree\nq - quit\n\n>");
         read = getchar();
-        clearInputBuffer();
+        util::clearInputBuffer();
         switch (read)
         {
             case '1':
@@ -100,6 +98,6 @@ int main(int argc, char** args)
     
     printf("Application exiting, press enter to continue.\n\n>");
     getchar();
-    clearInputBuffer();                                 // Clear input stream from in case its not empty.
+    util::clearInputBuffer();                                 // Clear input stream from in case its not empty.
     return 0;
 }

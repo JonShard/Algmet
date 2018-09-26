@@ -1,4 +1,5 @@
 #include "BinaryTree.hpp"
+#include "Utilities.hpp"
 
 BinaryTree::BinaryTree()
 {
@@ -93,22 +94,42 @@ int BinaryTree::length()
 }
 
 
-void displayTree(BinaryTreeNode* root)
+void displayTree(BinaryTreeNode* root, BinaryTree::Order order)
 {
-
+    if (order == BinaryTree::PreOrder) printf("%c (%d)", root->m_key, root->m_key);
+    
+    if (root->m_left) displayTree(root->m_left, order);
+    if (order == BinaryTree::InOrder) printf("%c (%d)", root->m_key, root->m_key);
+    
+    if (root->m_right) displayTree(root->m_right, order);
+    if (order == BinaryTree::PostOrder) printf("%c (%d)", root->m_key, root->m_key);
 }
 
 void BinaryTree::display()
 {
     if (m_root)
     {
-        BinaryTreeNode* head = m_root;
-        while(head)
+        char read = ' ';
+        do 
         {
-            if (head->m_left) ;
-            printf("%d", head->m_key);
-            if (head->m_right) ;
-        }
+            printf("\n\nOrder to display the tree:\n1 - preorder\n2 - inorder\n3 - postorder\nq - back\n\n>");
+            read = getchar();
+            util::clearInputBuffer();
+            switch (read)
+            {
+                case '1':
+                   displayTree(m_root, PreOrder);
+                break;
+
+                case '2':
+                    displayTree(m_root, InOrder);
+                break;
+
+                case '3': 
+                    displayTree(m_root, PostOrder);
+                break;
+            }
+        } while (read != 'q');
     }
     else
     {
