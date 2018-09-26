@@ -3,27 +3,44 @@
 #include <iostream>                                 // Reading parameter if not given.
 #include <string>                                   // Reading parameter if not given.
 
-#include "LinkList.hpp"
-#include "BinaryTree.hpp"
-
-#include "Utilities.hpp"
+#include "../include/LinkList.hpp"
+#include "../include/BinaryTree.hpp"
+#include "../include/Utilities.hpp"
 
 
 void initLinkList(int length)
 {
     LinkList linkList;                              // TODO: make destructor.
 
+    // Test values:
+    for (int i = 1; i <= 10; i++)
+    {
+        linkList.push(i);
+    }
 
-    Node** nodes = new Node*[length];
 
-    for(auto i = 0; i < length; i++)
-        nodes[i] = linkList.push(i);
+    char read = ' ';
+    do 
+    {
+        printf("\n\n1 - push\n2 - pop\n3- display\nq - back\n\n>");
+        read = getchar();
+        util::clearInputBuffer();
+        switch (read)
+        {
+            case '1':
+                linkList.push(getchar());     // Save the int value of the char. Dirty use of int m_key in Node.
+                util::clearInputBuffer();
+            break;
 
-    Node* notInList = new Node(999);
+            case '2':
+                linkList.pop();
+            break;
 
-    linkList.display();
-    linkList.moveToFront(notInList);
-    linkList.display();
+            case '3': 
+                linkList.display();
+            break;
+        }
+    } while (read != 'q');
 }
 
 

@@ -1,5 +1,5 @@
-#include "BinaryTree.hpp"
-#include "Utilities.hpp"
+#include "../include/BinaryTree.hpp"
+#include "../include/Utilities.hpp"
 
 BinaryTree::BinaryTree()
 {

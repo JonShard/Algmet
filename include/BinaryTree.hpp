@@ -2,7 +2,7 @@
 
 #include <cstdio>
 #include <cmath>
-#include "Node.hpp"
+#include "../include/Node.hpp"
 
 
 class BinaryTree

@@ -1,4 +1,4 @@
-#include "LinkList.hpp"
+#include "../include/LinkList.hpp"
 
 LinkList::LinkList()
 {

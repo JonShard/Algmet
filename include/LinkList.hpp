@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdio>                                   // Printf
-#include "Node.hpp"
+#include "../include/Node.hpp"
 
 class LinkList
 {
